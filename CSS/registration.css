@@ -1,0 +1,41 @@
+body {
+    background-image: url("/Images/Background.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+
+.registrationForm {
+    margin: 7% 10% 9% auto;
+    border-radius: 5%;
+    border: 1.5px solid rgba(59, 75, 250, 0.51);
+    width: 44%;
+    height: 68vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.formTitle{
+    padding-top: 6%;
+    text-align: center;
+}
+
+.registrationData{
+    display: flex;
+    margin:4% 7% auto 7%;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.inputData{
+    margin-bottom: 3%;
+}
+
+.btn {
+    background-color: rgba(0, 0, 255, 0.853);
+    color: white;
+    margin: 5% 31% auto 31%;
+    width: 38%;
+    text-align: center;
+}
