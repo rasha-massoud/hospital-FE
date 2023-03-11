@@ -17,22 +17,26 @@
         </div>
         <div class="registrationData">
             <label for="username">Username</label>
-            <input type="text" name="username" class="inputData" id="username" placeholder="Jane Doe" required="required">
+            <input type="text" name="username" class="inputData" id="username" placeholder="Jane Doe"
+                required="required">
 
             <label for="email">Email</label>
-            <input type="email" name="email" class="inputData" id="email" placeholder="Janedoe@gmail.com" required="required">
+            <input type="email" name="email" class="inputData" id="email" placeholder="Janedoe@gmail.com"
+                required="required">
 
             <label for="passsword">Password</label>
-            <input type="password" name="password" class="inputData" id="password" placeholder="********" required="required">
+            <input type="password" name="password" class="inputData" id="password" placeholder="********"
+                required="required">
 
             <label for="confirmPassword">Confirm Password</label>
-            <input type="password" name="confirmPassword" class="inputData" id="confirmPassword" placeholder="********" required="required">
-        
+            <input type="password" name="confirmPassword" class="inputData" id="confirmPassword" placeholder="********"
+                required="required">
+
             <label for="position">Choose Role</label>
-            <select name="position" id="position">
-              <option value="patient" selected>Patient</option>
-              <option value="employee">Employee</option>
-              <option value="admin">Admin</option>
+            <select name="position" id="position" required>
+                <option value="patient">Patient</option>
+                <option value="employee">Employee</option>
+                <option value="admin">Admin</option>
             </select>
 
             <button class="btn" id="submit">Register</button>
@@ -40,7 +44,10 @@
 
     </form>
     <script src="/JS/axios.min.js"></script>
-    <script src="/JS/registration.js" type="text/javascript"></script>
+    <script src="/JS/script.js" type="text/javascript"></script>
+    <script>
+        workshop_pages.loadFor("registration");
+    </script>
 
 </body>
 
