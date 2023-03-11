@@ -23,7 +23,6 @@ submit.addEventListener("click", () => {
         "username": username,
         "email": email,
         "password": password,
-
     }
 
     const jsontext = document.createElement("div");
