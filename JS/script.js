@@ -107,7 +107,6 @@ workshop_pages.load_login = async () => {
             "data": data
         }).then((result) => {
             console.log(result.data.user_type_id);
-
         }).catch((err) => {
             console.error(err);
         });
