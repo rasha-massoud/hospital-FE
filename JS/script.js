@@ -63,15 +63,12 @@ workshop_pages.load_registration = async () => {
                 "url": get_users_url,
                 "data": data
             }).then((result) => {
-                console.log(result.data);
-        
+                // console.log(result.data);
             }).catch((err) => {
                 console.error(err);
             });
         }
     });
-
-
 
     const checkEntries = (name, email, password, confirmPassword, dob, user_type_id) => {
         if (!(name && email && password && confirmPassword && dob)) {
@@ -90,4 +87,29 @@ workshop_pages.load_registration = async () => {
             return password.match(decimal) ? true : false;
         }
     }
+}
+
+workshop_pages.load_login = async () => {
+
+    document.getElementById("signIn").addEventListener("click", ()=>{
+        const email = document.forms["registrationForm"]["email"].value;
+        const password = document.forms["registrationForm"]["password"].value;
+        
+        let data = new FormData();
+        data.append('email', email);
+        data.append('password', password);
+        
+        const get_users_url = workshop_pages.base_url + "login.php";
+
+        axios({
+            "method": "post",
+            "url": get_users_url,
+            "data": data
+        }).then((result) => {
+            console.log(result.data.user_type_id);
+
+        }).catch((err) => {
+            console.error(err);
+        });
+    });
 }
