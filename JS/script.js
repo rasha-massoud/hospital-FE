@@ -143,3 +143,34 @@ workshop_pages.load_hospital = async () => {
             });
     }
 }
+
+workshop_pages.load_employee = async () => {
+    window.onload = function () {
+        const categories = document.getElementById("colDisplay")
+        const get_emp_url = workshop_pages.base_url + "employee.php";
+
+        axios.get(get_emp_url)
+            .then(function (response) {
+                const employees = response.data;
+                employees.forEach(employee => {
+                    const html = `
+                    <div class="colDisplay">
+                        <div class="rowDisplay" id="usersData">
+                            <h2 class="rowData" id="idGet">${employee.id}</h2>
+                            <h2 class="rowData" id="userIdGet">${employee.user_id}</h2>
+                            <h2 class="rowData" id="ssnGet">${employee.SSN}</h2>
+                            <h2 class="rowData" id="dateJoinedGet">${employee.date_joined}</h2>
+                            <h2 class="rowData" id="positionGet">${employee.position}</h2>
+                            <h2 class="rowData" id="hospitalIdGet">${employee.hospital_id}</h2>
+                        </div>
+                    </div>
+                    `;
+                    categories.insertAdjacentHTML("beforeend", html);
+                });
+
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+    }
+}
