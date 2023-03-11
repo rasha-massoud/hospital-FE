@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="keywords" content="HTML, CSS, JavaScript">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="/CSS/registration.css" rel="StyleSheet" />
+    <link href="/Hospital_FrontEnd/CSS/registration.css" rel="StyleSheet" />
     <title>Register Form!</title>
 </head>
 
@@ -16,8 +16,8 @@
             <h1>Registration Form!</h1>
         </div>
         <div class="registrationData">
-            <label for="username">Username</label>
-            <input type="text" name="username" class="inputData" id="username" placeholder="Jane Doe"
+            <label for="name">Name</label>
+            <input type="text" name="name" class="inputData" id="name" placeholder="Jane Doe"
                 required="required">
 
             <label for="email">Email</label>
@@ -32,8 +32,11 @@
             <input type="password" name="confirmPassword" class="inputData" id="confirmPassword" placeholder="********"
                 required="required">
 
+            <label for="dob">Day of Birth</label>
+            <input type="date" name="dob" class="inputData" id="dob" required="required">
+
             <label for="position">Choose Role</label>
-            <select name="position" id="position" required>
+            <select name="user_type_id" id="user_type_id" required>
                 <option value="patient">Patient</option>
                 <option value="employee">Employee</option>
                 <option value="admin">Admin</option>
@@ -43,8 +46,8 @@
         </div>
 
     </form>
-    <script src="/JS/axios.min.js"></script>
-    <script src="/JS/script.js" type="text/javascript"></script>
+    <script src="/Hospital_FrontEnd/JS/axios.min.js"></script>
+    <script src="/Hospital_FrontEnd/JS/script.js" type="text/javascript"></script>
     <script>
         workshop_pages.loadFor("registration");
     </script>
