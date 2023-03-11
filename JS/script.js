@@ -31,8 +31,9 @@ workshop_pages.loadFor = (page) => {
 }
 
 workshop_pages.load_registration = async () => {
+    let data = new FormData();
 
-    document.getElementById("submit").addEventListener("click",  async () => {
+    document.getElementById("submit").addEventListener("click",  () => {
         const name = document.forms["registrationForm"]["name"].value;
         const email = document.forms["registrationForm"]["email"].value;
         const password = document.forms["registrationForm"]["password"].value;
@@ -40,7 +41,6 @@ workshop_pages.load_registration = async () => {
         const dob = document.forms["registrationForm"]["dob"].value;
         const user_type_id = document.forms["registrationForm"]["user_type_id"].value;
 
-        let data = new FormData();
 
         const isValidated = checkEntries(name, email, password, confirmPassword, dob, user_type_id);
         if (isValidated) {
@@ -48,11 +48,29 @@ workshop_pages.load_registration = async () => {
             data.append('email', email);
             data.append('password', password);
             data.append('dob',dob);
-            data.append('user_type_id',user_type_id);
+            if(user_type_id=="patient"){
+                data.append('user_type_id',1);
+            } else if(user_type_id=="employee"){
+                data.append('user_type_id',2);
+            } else{
+                data.append('user_type_id',3);
+            }
+
+            const get_users_url = workshop_pages.base_url + "registration.php";
+
+            axios({
+                "method": "post",
+                "url": get_users_url,
+                "data": data
+            }).then((result) => {
+                console.log(result.data);
+        
+            }).catch((err) => {
+                console.error(err);
+            });
         }
-        const get_users_url = workshop_pages.base_url + "registration.php";
-        const response = await workshop_pages.postAPI (get_users_url, data);
     });
+
 
 
     const checkEntries = (name, email, password, confirmPassword, dob, user_type_id) => {
