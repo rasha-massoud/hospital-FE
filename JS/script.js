@@ -33,7 +33,7 @@ workshop_pages.loadFor = (page) => {
 workshop_pages.load_registration = async () => {
     let data = new FormData();
 
-    document.getElementById("submit").addEventListener("click",  () => {
+    document.getElementById("submit").addEventListener("click", () => {
         const name = document.forms["registrationForm"]["name"].value;
         const email = document.forms["registrationForm"]["email"].value;
         const password = document.forms["registrationForm"]["password"].value;
@@ -47,13 +47,13 @@ workshop_pages.load_registration = async () => {
             data.append('name', name);
             data.append('email', email);
             data.append('password', password);
-            data.append('dob',dob);
-            if(user_type_id=="patient"){
-                data.append('user_type_id',1);
-            } else if(user_type_id=="employee"){
-                data.append('user_type_id',2);
-            } else{
-                data.append('user_type_id',3);
+            data.append('dob', dob);
+            if (user_type_id == "patient") {
+                data.append('user_type_id', 1);
+            } else if (user_type_id == "employee") {
+                data.append('user_type_id', 2);
+            } else {
+                data.append('user_type_id', 3);
             }
 
             const get_users_url = workshop_pages.base_url + "registration.php";
@@ -91,14 +91,14 @@ workshop_pages.load_registration = async () => {
 
 workshop_pages.load_login = async () => {
 
-    document.getElementById("signIn").addEventListener("click", ()=>{
+    document.getElementById("signIn").addEventListener("click", () => {
         const email = document.forms["registrationForm"]["email"].value;
         const password = document.forms["registrationForm"]["password"].value;
-        
+
         let data = new FormData();
         data.append('email', email);
         data.append('password', password);
-        
+
         const get_users_url = workshop_pages.base_url + "login.php";
 
         axios({
@@ -111,4 +111,35 @@ workshop_pages.load_login = async () => {
             console.error(err);
         });
     });
+}
+
+workshop_pages.load_hospital = async () => {
+    window.onload = function () {
+        const categories = document.getElementById("colDisplay")
+        const get_hosp_url = workshop_pages.base_url + "hospital.php";
+
+        axios.get(get_hosp_url)
+            .then(function (response) {
+                const hospitals = response.data;
+                hospitals.forEach(hospital => {
+                    const html = `
+                    <div class="colDisplay">
+                        <div class="rowDisplay" id="usersData">
+                            <h2 class="rowData" id="idGet">${hospital.id}</h2>
+                            <h2 class="rowData" id="nameGet">${hospital.name}</h2>
+                            <h2 class="rowData" id="addressGet">${hospital.address}</h2>
+                            <h2 class="rowData" id="phoneNumberGet">${hospital.phone_number}</h2>
+                            <h2 class="rowData" id="emailGet">${hospital.email}</h2>
+                            <h2 class="rowData" id="facebookUrlGet">${hospital.facebook_url}</h2>
+                        </div>
+                    </div>
+            `;
+                    categories.insertAdjacentHTML("beforeend", html);
+                });
+
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+    }
 }

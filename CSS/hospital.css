@@ -1,0 +1,75 @@
+body {
+    background-image: url("/Hospital_FrontEnd/Images/BackgroundAdmin.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    margin:0;
+    padding: 0;
+}
+
+.navBar{
+    padding-left: 2%;
+    padding-right: 2%;
+    display:flex;            
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgba(20, 20, 44, 0.853);
+    color: white;
+}
+
+.navTitle{
+    text-align: center;
+    margin: auto auto auto 0;
+    font-size:2em;
+}
+
+.navOptions{
+    width:30%;
+    height:100%;
+    display: flex;
+}
+
+.navOptions ul{
+    width:100%;
+    list-style: none;
+    border: 2px solid white;
+    display: flex;
+    justify-content: space-around;
+    justify-items: center;
+}
+
+.navOptions li {
+    font-size: larger;
+}
+
+.navOptions li:hover {
+    background-color: rgba(119, 136, 153, 0.915);
+    border-radius: 0px 50px;
+}
+
+.optionData {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.optionDataTitle {
+    display: flex;
+    justify-content: center;
+}
+
+.rowDisplay {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.btn {
+    background-color: rgba(0, 0, 255, 0.853);
+    color: white;
+    margin: 3% 31% auto 31%;
+    width: 38%;
+    text-align: center;
+}
+

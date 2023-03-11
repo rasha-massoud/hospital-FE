@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="keywords" content="HTML, CSS, JavaScript">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="/Hospital_FrontEnd/CSS/admin.css" rel="StyleSheet" />
+    <link href="/Hospital_FrontEnd/CSS/hospital.css" rel="StyleSheet" />
     <title>Admin</title>
 </head>
 
@@ -20,6 +20,28 @@
             </ul>
         </div>
     </nav>
+    <div class="optionData">
+        <div class="colDisplay">
+            <div class="rowDisplay labelMargin">
+                <h2>Id</h2>
+                <h2>Name</h2>
+                <h2>Address</h2>
+                <h2>Phone Number</h2>
+                <h2>Email</h2>
+                <h2>Facebook URL</h2>
+            </div>
+            <div class="colDisplay">
+                <div class="rowDisplay" id="usersData">
+                    <h2 class="rowData" id="idGet"></h2>
+                    <h2 class="rowData" id="nameGet"></h2>
+                    <h2 class="rowData" id="addressGet"></h2>
+                    <h2 class="rowData" id="phoneNumberGet"></h2>
+                    <h2 class="rowData" id="emailGet"></h2>
+                    <h2 class="rowData" id="facebookUrlGet"></h2>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <script src="/Hospital_FrontEnd/JS/axios.min.js"></script>
     <script src="/Hospital_FrontEnd/JS/script.js" type="text/javascript"></script>
