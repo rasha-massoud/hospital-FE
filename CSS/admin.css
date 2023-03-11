@@ -1,0 +1,84 @@
+body {
+    background-image: url("/Hospital_FrontEnd/Images/Background.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    margin:0;
+    padding: 0;
+}
+
+.navBar{
+    padding-left: 2%;
+    padding-right: 2%;
+    display:flex;            
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgba(20, 20, 44, 0.853);
+    color: white;
+}
+
+.navTitle{
+    text-align: center;
+    margin: auto auto auto 0;
+    font-size:2em;
+}
+
+.navOptions{
+    width:30%;
+    height:100%;
+    display: flex;
+}
+
+.navOptions ul{
+    width:100%;
+    list-style: none;
+    border: 2px solid white;
+    display: flex;
+    justify-content: space-around;
+    justify-items: center;
+}
+
+.navOptions li {
+    font-size: larger;
+}
+
+.navOptions li:hover {
+    background-color: rgba(119, 136, 153, 0.915);
+    border-radius: 0px 50px;
+}
+
+.registrationForm {
+    margin: 12% 10% 9% auto;
+    border-radius: 5%;
+    border: 1.5px solid rgba(59, 75, 250, 0.51);
+    width: 44%;
+    height: 50vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.formTitle{
+    padding-top: 5%;
+    text-align: center;
+}
+
+.registrationData{
+    display: flex;
+    margin:2% 7% auto 7%;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.inputData{
+    margin-bottom: 1.75%;
+}
+
+.btn {
+    background-color: rgba(0, 0, 255, 0.853);
+    color: white;
+    margin: 3% 31% auto 31%;
+    width: 38%;
+    text-align: center;
+}
+
