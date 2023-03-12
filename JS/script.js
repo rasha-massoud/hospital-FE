@@ -110,6 +110,14 @@ workshop_pages.load_login = async () => {
         }).then((result) => {
             console.log(result.data.user_type_id);
             test = result.data.user_type_id;
+            if(test==1){
+                window.location.href="/Hospital_FrontEnd/HTML/patientDepartment.html"
+            }else if(test==2){
+                window.location.href="Hospital_FrontEnd/HTML/employeePage.html"
+            }
+            else{
+                window.location.href="/Hospital_FrontEnd/HTML/employee.html"
+            }
         }).catch((err) => {
             console.error(err);
         });
@@ -502,7 +510,6 @@ workshop_pages.load_getInvoice = async () => {
                     `;
                     categories.insertAdjacentHTML("beforeend", html);
                 });
-
 
                 const btn1 = document.getElementById("btn1");
                 const makepdf = document.getElementById("makepdf");
