@@ -379,3 +379,33 @@ workshop_pages.load_medication = async () => {
 
     })
 }
+
+workshop_pages.load_service = async () => {
+    let data = new FormData();
+
+    document.getElementById("request").addEventListener("click", () => {
+        const employee_id = document.forms["registrationForm"]["employee_id"].value;
+        const patient_id = document.forms["registrationForm"]["patient_id"].value;
+        const description = document.forms["registrationForm"]["description"].value;
+        const cost = document.forms["registrationForm"]["cost"].value;
+        const department_id = document.forms["registrationForm"]["department_id"].value;
+        
+        data.append('employee_id', employee_id);
+        data.append('patient_id', patient_id);
+        data.append('description', description);
+        data.append('cost', cost);
+        data.append('department_id', department_id);
+
+        const get_users_url = workshop_pages.base_url + "service.php";
+
+        axios({
+            "method": "post",
+            "url": get_users_url,
+            "data": data
+        }).then((result) => {
+            // console.log(result.data);
+        }).catch((err) => {
+            console.error(err);
+        });
+    });
+}
