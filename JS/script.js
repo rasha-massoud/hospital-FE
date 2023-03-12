@@ -409,3 +409,58 @@ workshop_pages.load_service = async () => {
         });
     });
 }
+
+workshop_pages.load_awaitingRequests = async () => {
+    window.onload = function () {
+        const categories = document.getElementById("colDisplay")
+        const get_patient_url = workshop_pages.base_url + "awaitingRequests.php";
+
+        axios.get(get_patient_url)
+            .then(function (response) {
+                const requests = response.data;
+                requests.forEach(request => {
+                    const html = `
+                    <div class="colDisplay">
+                        <div class="rowDisplay" id="usersData">
+                        <h2 class="rowData">${request.employer_id}</h2>
+                        <h2 class="rowData">${request.patient_id}</h2>
+                        <h2 class="rowData">${request.description}</h2>
+                        <h2 class="rowData">${request.cost}</h2>
+                        <h2 class="rowData">${request.department_id }</h2>
+                        <h2 class="rowData">${request.approved}</h2>
+                        </div>
+                    </div>
+                    `;
+                    categories.insertAdjacentHTML("beforeend", html);
+                });
+
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+    }
+
+    document.getElementById("accept").addEventListener("click",()=>{
+        
+        const employer_id = document.getElementById("employer_id").value;
+        const patient_id = document.getElementById("patient_id").value;
+        const approved = document.getElementById("approved").value;
+        let data = new FormData();
+        data.append('employer_id', employer_id);
+        data.append('patient_id', patient_id);
+        data.append('approved', approved);
+
+        const get_users_url = workshop_pages.base_url + "acceptingRequests.php";
+
+        axios({
+            "method": "post",
+            "url": get_users_url,
+            "data": data
+        }).then((result) => {
+            // console.log(result.data);
+        }).catch((err) => {
+            console.error(err);
+        });
+
+    })
+}
