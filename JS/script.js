@@ -101,12 +101,14 @@ workshop_pages.load_login = async () => {
 
         const get_users_url = workshop_pages.base_url + "login.php";
 
+        var test;
         axios({
             "method": "post",
             "url": get_users_url,
             "data": data
         }).then((result) => {
             console.log(result.data.user_type_id);
+            test= result.data.user_type_id;
         }).catch((err) => {
             console.error(err);
         });
@@ -422,7 +424,7 @@ workshop_pages.load_awaitingRequests = async () => {
                     const html = `
                     <div class="colDisplay">
                         <div class="rowDisplay" id="usersData">
-                        <h2 class="rowData">${request.employer_id}</h2>
+                        <h2 class="rowData">${request.employee_id}</h2>
                         <h2 class="rowData">${request.patient_id}</h2>
                         <h2 class="rowData">${request.description}</h2>
                         <h2 class="rowData">${request.cost}</h2>
@@ -441,20 +443,26 @@ workshop_pages.load_awaitingRequests = async () => {
     }
 
     document.getElementById("accept").addEventListener("click",()=>{
-        
-        const employer_id = document.getElementById("employer_id").value;
+        const employee_id = document.getElementById("employee_id").value;
         const patient_id = document.getElementById("patient_id").value;
+        const description = document.getElementById("description").value;
+        const cost = document.getElementById("cost").value;
+        const department_id = document.getElementById("department_id").value;
         const approved = document.getElementById("approved").value;
         let data = new FormData();
-        data.append('employer_id', employer_id);
+
+        data.append('employee_id', employee_id);
         data.append('patient_id', patient_id);
+        data.append('description', description);
+        data.append('cost', cost);
+        data.append('department_id', department_id);
         data.append('approved', approved);
 
-        const get_users_url = workshop_pages.base_url + "acceptingRequests.php";
+        const get_update_url = workshop_pages.base_url + "acceptingRequests.php";
 
         axios({
             "method": "post",
-            "url": get_users_url,
+            "url": get_update_url,
             "data": data
         }).then((result) => {
             // console.log(result.data);

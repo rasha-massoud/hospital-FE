@@ -48,16 +48,25 @@
             <h1>Approval Form!</h1>
         </div>
         <div class="registrationData" id="registrationData">
-            <label for="employer_id">Employeer Id</label>
-            <input type="text" name="employer_id" class="inputData" id="employer_id" required="required">
+            <label for="employee_id">Employeer Id</label>
+            <input type="text" name="employee_id" class="inputData" id="employee_id" required="required">
 
             <label for="patient_id">Patient Id</label>
             <input type="text" name="patient_id" class="inputData" id="patient_id" required="required">
 
+            <label for="description">Description</label>
+            <input type="text" name="description" class="inputData" id="description" required="required">
+
+            <label for="cost">Cost</label>
+            <input type="text" name="cost" class="inputData" id="cost" required="required">
+
+            <label for="department_id">Department Id</label>
+            <input type="text" name="department_id" class="inputData" id="department_id" required="required">
+
             <label for="approved">Approval</label>
             <select name="approved" class="inputData" id="approved" required>
                 <option value="approved">1</option>
-                <option value="not_approved"></option>
+                <option value="not_approved">0</option>
             </select>
 
             <button class="btn" id="accept">Choose a medication</button>
