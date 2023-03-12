@@ -5,8 +5,8 @@
     <meta charset="UTF-8">
     <meta name="keywords" content="HTML, CSS, JavaScript">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="/Hospital_FrontEnd/CSS/patientToHosp.css" rel="StyleSheet" />
-    <title>Admin</title>
+    <link href="/Hospital_FrontEnd/CSS/employeeToHosp.css" rel="StyleSheet" />
+    <title>Employee/Hospital</title>
 </head>
 
 <body>
@@ -24,10 +24,10 @@
     </nav>
     <form name="registrationForm" class="registrationForm">
         <div class="formTitle">
-            <h1>Assign a Patient to a Hospital</h1>
+            <h1>Assign a Employee to a Hospital(s)</h1>
         </div>
         <div class="registrationData">
-            <label for="patient_id">Patient Id</label>
+            <label for="employee_id">Employee Id</label>
             <input type="text" name="user_id" class="inputData" id="user_id" required="required">
 
             <label for="hospital_id">Hospital Id</label>
@@ -46,14 +46,14 @@
             <input type="date" name="date_left" class="inputData" id="date_left" required="required">
 
             <button class="btn" id="save">Save</button>
-            <a href="patientToHospDisplay.html" style="text-align: center;">Show results</a>
         </div>
 
     </form>
+
     <script src="/Hospital_FrontEnd/JS/axios.min.js"></script>
     <script src="/Hospital_FrontEnd/JS/script.js" type="text/javascript"></script>
     <script>
-        workshop_pages.loadFor("patientToHosp");
+        workshop_pages.loadFor("employeeToHospDisplay");
     </script>
 
 </body>

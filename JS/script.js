@@ -233,3 +233,33 @@ workshop_pages.load_patientToHosp = async () => {
         });
     });
 }
+
+workshop_pages.load_patientToHospDisplay = async () => {
+    window.onload = function () {
+        const categories = document.getElementById("colDisplay")
+        const get_patient_url = workshop_pages.base_url + "patientToHospDisplay.php";
+
+        axios.get(get_patient_url)
+            .then(function (response) {
+                const links = response.data;
+                links.forEach(link => {
+                    const html = `
+                    <div class="colDisplay">
+                        <div class="rowDisplay" id="usersData">
+                            <h2 class="rowData" id="hospitalIdGet">${link.hospital_id}</h2>
+                            <h2 class="rowData" id="userIdGet">${link.user_id}</h2>
+                            <h2 class="rowData" id="active">${link.is_active}</h2>
+                            <h2 class="rowData" id="dateJoinedGet">${link.date_joined}</h2>
+                            <h2 class="rowData" id="dateLetfGet">${link.date_left}</h2>
+                        </div>
+                    </div>
+                    `;
+                    categories.insertAdjacentHTML("beforeend", html);
+                });
+
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+    }
+}
