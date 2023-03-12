@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="keywords" content="HTML, CSS, JavaScript">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/Hospital_FrontEnd/CSS/medication.css" rel="StyleSheet" />
+    <title>Medication</title>
+</head>
+
+<body>
+    <nav class="navBar">
+        <div class="navTitle">Patient's Page</div>
+        <div class="navOptions">
+            <ul>
+                <li><a href="/Hospital_FrontEnd/HTML/patientDepartment.html">Department/Room</a></li>
+                <li><a href="/Hospital_FrontEnd/HTML/patientMedication.html">Medication</a></li>
+                <li><a href="/Hospital_FrontEnd/HTML/patientRequestService.html">Services</a></li>
+                <li><a href="/Hospital_FrontEnd/HTML/patientInvoice.html">Invoice</a></li>
+                <li><a href="/Hospital_FrontEnd/HTML/patientEdit.html">Edit</a></li>
+            </ul>
+        </div>
+    </nav>
+    <div class="optionData">
+        <div class="colDisplay">
+            <div class="rowDisplay labelMargin">
+                <h2>Id</h2>
+                <h2>Name</h2>
+                <h2>Cost</h2>
+            </div>
+            <div class="colDisplay" id="colDisplay">
+                <div class="rowDisplay" id="usersData">
+                    <h2 class="rowData" id="idGet"></h2>
+                    <h2 class="rowData" id="nameGet"></h2>
+                    <h2 class="rowData" id="costGet"></h2>
+                </div>
+            </div>
+        </div>
+        <div class="formTitle">
+            <h1>Choose a Medication Form!</h1>
+        </div>
+        <div class="registrationData" id="registrationData">
+            <label for="user_id">User Id</label>
+            <input type="text" name="user_id" class="inputData" id="user_id" required="required">
+
+            <label for="medication_id">Medication Id</label>
+            <input type="text" name="medication_id" class="inputData" id="medication_id" required="required">
+
+            <label for="quantity">Quantity</label>
+            <input type="text" name="quantity" class="inputData" id="quantity" required="required">
+
+            <button class="btn" id="choose">Choose a medication</button>
+
+        </div>
+
+
+        <script src="/Hospital_FrontEnd/JS/axios.min.js"></script>
+        <script src="/Hospital_FrontEnd/JS/script.js" type="text/javascript"></script>
+        <script>
+            workshop_pages.loadFor("medication");
+        </script>
+
+</body>
+
+</html>

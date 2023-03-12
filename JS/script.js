@@ -327,3 +327,55 @@ workshop_pages.load_department = async () => {
         });
     });
 }
+
+workshop_pages.load_medication = async () => {
+    window.onload = function () {
+        const categories = document.getElementById("colDisplay")
+        const get_patient_url = workshop_pages.base_url + "medication.php";
+
+        axios.get(get_patient_url)
+            .then(function (response) {
+                const medications = response.data;
+                medications.forEach(medication => {
+                    const html = `
+                    <div class="colDisplay">
+                        <div class="rowDisplay" id="usersData">
+                            <h2 class="rowData" id="idGet">${medication.id}</h2>
+                            <h2 class="rowData" id="nameGet">${medication.name}</h2>
+                            <h2 class="rowData" id="costGet">${medication.cost}</h2>
+                        </div>
+                    </div>
+                    `;
+                    categories.insertAdjacentHTML("beforeend", html);
+                });
+
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+    }
+
+    document.getElementById("choose").addEventListener("click",()=>{
+        
+        const user_id = document.getElementById("user_id").value;
+        const medication_id = document.getElementById("medication_id").value;
+        const quantity = document.getElementById("quantity").value;
+        let data = new FormData();
+        data.append('user_id', user_id);
+        data.append('medication_id', medication_id);
+        data.append('quantity', quantity);
+
+        const get_users_url = workshop_pages.base_url + "chooseMed.php";
+
+        axios({
+            "method": "post",
+            "url": get_users_url,
+            "data": data
+        }).then((result) => {
+            // console.log(result.data);
+        }).catch((err) => {
+            console.error(err);
+        });
+
+    })
+}
