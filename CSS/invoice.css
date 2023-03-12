@@ -52,10 +52,6 @@ body {
     justify-content: flex-start;
 }
 
-.card{
-    visibility: hidden;
-}
-
 .cardTitle {
     display: flex;
     justify-content: center;
@@ -123,5 +119,4 @@ a:visited {
     margin: 3% 31% auto 31%;
     width: 38%;
     text-align: center;
-    visibility: hidden;
 }

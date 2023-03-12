@@ -478,7 +478,7 @@ workshop_pages.load_getInvoice = async () =>{
     let data = new FormData();
 
     document.getElementById("getInvoiceBtn").addEventListener("click", () => {
-        const user_id = document.forms["registrationForm"]["user_id"].value;
+        const user_id = document.getElementById("user_id").value;
     
         data.append('user_id', user_id);
 
@@ -489,13 +489,18 @@ workshop_pages.load_getInvoice = async () =>{
             "url": get_users_url,
             "data": data
         }).then((result) => {
-            document.getElementById("btn1").style.visibility = "visible";
-            document.getElementsByClassName("card")[0].style.visibility = "visible";
-            document.getElementById("userId").innerText=result.data.response.user_id;
-            document.getElementById("bloodType").innerText=result.data.response.user_id;
-            document.getElementById("userId").innerText=result.data.response.user_id;
-            document.getElementById("userId").innerText=result.data.response.user_id;
+            document.getElementById("userId").innerText=result.data.user_id;
+            document.getElementById("bloodType").innerText=result.data.blood_type;
+            document.getElementById("EHR").innerText=result.data.EHR;
 
+            const btn1 = document.getElementById("btn1");
+            const makepdf = document.getElementById("makepdf");
+      
+            btn1.addEventListener("click", function () {
+                html2pdf().from(makepdf).save();
+            });
+
+            
         }).catch((err) => {
             console.error(err);
         });
