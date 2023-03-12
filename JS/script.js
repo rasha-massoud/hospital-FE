@@ -466,7 +466,6 @@ workshop_pages.load_awaitingRequests = async () => {
             "url": get_update_url,
             "data": data
         }).then((result) => {
-            // console.log(result.data);
         }).catch((err) => {
             console.error(err);
         });
