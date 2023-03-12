@@ -174,3 +174,32 @@ workshop_pages.load_employee = async () => {
             });
     }
 }
+
+workshop_pages.load_patient = async () => {
+    window.onload = function () {
+        const categories = document.getElementById("colDisplay")
+        const get_patient_url = workshop_pages.base_url + "patient.php";
+
+        axios.get(get_patient_url)
+            .then(function (response) {
+                const patients = response.data;
+                patients.forEach(patient => {
+                    const html = `
+                    <div class="colDisplay">
+                        <div class="rowDisplay" id="usersData">
+                            <h2 class="rowData" id="idGet">${patient.id}</h2>
+                            <h2 class="rowData" id="userIdGet">${patient.user_id}</h2>
+                            <h2 class="rowData" id="bloodTypeGet">${patient.blood_type}</h2>
+                            <h2 class="rowData" id="ehrGet">${patient.EHR}</h2>
+                        </div>
+                    </div>
+                    `;
+                    categories.insertAdjacentHTML("beforeend", html);
+                });
+
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+    }
+}
