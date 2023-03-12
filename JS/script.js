@@ -234,7 +234,7 @@ workshop_pages.load_patientToHosp = async () => {
     });
 }
 
-workshop_pages.load_patientToHospDisplay = async () => {
+workshop_pages.load_employeeToHosp = async () => {
     window.onload = function () {
         const categories = document.getElementById("colDisplay")
         const get_patient_url = workshop_pages.base_url + "patientToHospDisplay.php";
@@ -262,4 +262,34 @@ workshop_pages.load_patientToHospDisplay = async () => {
                 console.log(error);
             });
     }
+}
+
+workshop_pages.load_patientToHosp = async () => {
+    let data = new FormData();
+
+    document.getElementById("save").addEventListener("click", () => {
+        const user_id = document.forms["registrationForm"]["user_id"].value;
+        const hospital_id = document.forms["registrationForm"]["hospital_id"].value;
+        const is_active = document.forms["registrationForm"]["is_active"].value;
+        const date_joined = document.forms["registrationForm"]["date_joined"].value;
+        const date_left = document.forms["registrationForm"]["date_left"].value;
+
+        data.append('user_id', user_id);
+        data.append('hospital_id', hospital_id);
+        data.append('is_active', is_active);
+        data.append('date_joined', date_joined);
+        data.append('date_left', date_left);
+
+        const get_users_url = workshop_pages.base_url + "employeeToHosp.php";
+
+        axios({
+            "method": "post",
+            "url": get_users_url,
+            "data": data
+        }).then((result) => {
+            // console.log(result.data);
+        }).catch((err) => {
+            console.error(err);
+        });
+    });
 }
