@@ -424,18 +424,17 @@ workshop_pages.load_awaitingRequests = async () => {
                     const html = `
                     <div class="colDisplay">
                         <div class="rowDisplay" id="usersData">
-                        <h2 class="rowData">${request.employee_id}</h2>
-                        <h2 class="rowData">${request.patient_id}</h2>
-                        <h2 class="rowData">${request.description}</h2>
-                        <h2 class="rowData">${request.cost}</h2>
-                        <h2 class="rowData">${request.department_id }</h2>
-                        <h2 class="rowData">${request.approved}</h2>
+                        <h2 class="rowData" id="employeeIdGet">${request.employee_id}</h2>
+                        <h2 class="rowData" id="patientIdGet">${request.patient_id}</h2>
+                        <h2 class="rowData" id="descriptionGet">${request.description}</h2>
+                        <h2 class="rowData" id="costGet">${request.cost}</h2>
+                        <h2 class="rowData" id="departmentGet">${request.department_id }</h2>
+                        <h2 class="rowData" id="approvedGet">${request.approved}</h2>
                         </div>
                     </div>
                     `;
                     categories.insertAdjacentHTML("beforeend", html);
                 });
-
             })
             .catch(function (error) {
                 console.log(error);
@@ -450,13 +449,14 @@ workshop_pages.load_awaitingRequests = async () => {
         const department_id = document.getElementById("department_id").value;
         const approved = document.getElementById("approved").value;
         let data = new FormData();
-
+ 
         data.append('employee_id', employee_id);
         data.append('patient_id', patient_id);
         data.append('description', description);
         data.append('cost', cost);
         data.append('department_id', department_id);
         data.append('approved', approved);
+        console.log(employee_id, patient_id, description, cost, department_id, approved);
 
         const get_update_url = workshop_pages.base_url + "acceptingRequests.php";
 
@@ -470,5 +470,31 @@ workshop_pages.load_awaitingRequests = async () => {
             console.error(err);
         });
 
-    })
+    });
+}
+
+workshop_pages.load_getInvoice = async () =>{
+
+    let data = new FormData();
+
+    document.getElementById("getInvoiceBtn").addEventListener("click", () => {
+        const user_id = document.forms["registrationForm"]["user_id"].value;
+    
+        data.append('user_id', user_id);
+
+        const get_users_url = workshop_pages.base_url + "getInvoice.php";
+
+        axios({
+            "method": "post",
+            "url": get_users_url,
+            "data": data
+        }).then((result) => {
+            console.log(result.data.response);
+        }).catch((err) => {
+            console.error(err);
+        });
+    });
+
+
+    
 }

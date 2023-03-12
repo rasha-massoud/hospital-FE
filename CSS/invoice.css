@@ -1,11 +1,9 @@
 body {
-    background-image: url("/Hospital_FrontEnd/Images/BackgroundAdmin.jpg");
+    background-image: url("/Hospital_FrontEnd/Images/Background.jpg");
     background-size: cover;
     background-repeat: no-repeat;
     overflow-x: hidden;
-    /* overflow-y: hidden; */
-    margin:0;
-    padding: 0;
+    overflow-y: hidden;
 }
 
 .navBar{
@@ -54,7 +52,11 @@ body {
     justify-content: flex-start;
 }
 
-.optionDataTitle {
+.card{
+    visibility: hidden;
+}
+
+.cardTitle {
     display: flex;
     justify-content: center;
 }
@@ -82,7 +84,7 @@ a:visited {
 }
 
 .registrationForm {
-    margin: 8% 10% 9% auto;
+    margin: 7% 10% 9% auto;
     border-radius: 5%;
     border: 1.5px solid rgba(59, 75, 250, 0.51);
     width: 44%;
@@ -92,19 +94,19 @@ a:visited {
 }
 
 .formTitle{
-    padding-top: 4%;
+    padding-top: 5%;
     text-align: center;
 }
 
 .registrationData{
     display: flex;
-    margin:0% 35% auto 35%;
+    margin:2% 7% auto 7%;
     flex-direction: column;
     justify-content: space-around;
 }
 
 .inputData{
-    margin-bottom: 0.5%;
+    margin-bottom: 1.75%;
 }
 
 .btn {
@@ -115,10 +117,11 @@ a:visited {
     text-align: center;
 }
 
-.createAccount{
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
+.btn1 {
+    background-color: rgba(0, 0, 255, 0.853);
+    color: white;
+    margin: 3% 31% auto 31%;
+    width: 38%;
+    text-align: center;
+    visibility: hidden;
 }
-

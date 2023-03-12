@@ -35,43 +35,44 @@
             </div>
             <div class="colDisplay" id="colDisplay">
                 <div class="rowDisplay" id="usersData">
-                    <h2 class="rowData"></h2>
-                    <h2 class="rowData"></h2>
-                    <h2 class="rowData"></h2>
-                    <h2 class="rowData"></h2>
-                    <h2 class="rowData"></h2>
-                    <h2 class="rowData"></h2>
+                    <h2 class="rowData" id="employeeIdGet"></h2>
+                    <h2 class="rowData" id="patientIdGet"></h2>
+                    <h2 class="rowData" id="descriptionGet"></h2>
+                    <h2 class="rowData" id="costGet"></h2>
+                    <h2 class="rowData" id="departmentGet"></h2>
+                    <h2 class="rowData" id="approvedGet"></h2>
                 </div>
             </div>
         </div>
         <div class="formTitle">
             <h1>Approval Form!</h1>
         </div>
-        <div class="registrationData" id="registrationData">
-            <label for="employee_id">Employeer Id</label>
-            <input type="text" name="employee_id" class="inputData" id="employee_id" required="required">
+        <form name="registrationForm">
+            <div class="registrationData" id="registrationData">
+                <label for="employee_id">Employeer Id</label>
+                <input type="text" name="employee_id" class="inputData" id="employee_id" required="required">
 
-            <label for="patient_id">Patient Id</label>
-            <input type="text" name="patient_id" class="inputData" id="patient_id" required="required">
+                <label for="patient_id">Patient Id</label>
+                <input type="text" name="patient_id" class="inputData" id="patient_id" required="required">
 
-            <label for="description">Description</label>
-            <input type="text" name="description" class="inputData" id="description" required="required">
+                <label for="description">Description</label>
+                <input type="text" name="description" class="inputData" id="description" required="required">
 
-            <label for="cost">Cost</label>
-            <input type="text" name="cost" class="inputData" id="cost" required="required">
+                <label for="cost">Cost</label>
+                <input type="text" name="cost" class="inputData" id="cost" required="required">
 
-            <label for="department_id">Department Id</label>
-            <input type="text" name="department_id" class="inputData" id="department_id" required="required">
+                <label for="department_id">Department Id</label>
+                <input type="text" name="department_id" class="inputData" id="department_id" required="required">
 
-            <label for="approved">Approval</label>
-            <select name="approved" class="inputData" id="approved" required>
-                <option value="approved">1</option>
-                <option value="not_approved">0</option>
-            </select>
+                <label for="approved">Approval</label>
+                <select name="approved" class="inputData" id="approved" required>
+                    <option value="1">1</option>
+                    <option value="0">0</option>
+                </select>
 
-            <button class="btn" id="accept">Choose a medication</button>
-
-        </div>
+                <button class="btn" id="accept">Approve a Service</button>
+        </form>
+    </div>
 
 
     <script src="/Hospital_FrontEnd/JS/axios.min.js"></script>
