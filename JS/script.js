@@ -92,9 +92,10 @@ workshop_pages.load_registration = async () => {
 workshop_pages.load_login = async () => {
 
     document.getElementById("signIn").addEventListener("click", () => {
-        const email = document.forms["registrationForm"]["email"].value;
-        const password = document.forms["registrationForm"]["password"].value;
+        const email= document.getElementById("email").value;
+        const password= document.getElementById("password").value;
 
+        console.log(email, password);
         let data = new FormData();
         data.append('email', email);
         data.append('password', password);
@@ -489,12 +490,15 @@ workshop_pages.load_getInvoice = async () =>{
             "url": get_users_url,
             "data": data
         }).then((result) => {
-            console.log(result.data.response);
+            document.getElementById("btn1").style.visibility = "visible";
+            document.getElementsByClassName("card")[0].style.visibility = "visible";
+            document.getElementById("userId").innerText=result.data.response.user_id;
+            document.getElementById("bloodType").innerText=result.data.response.user_id;
+            document.getElementById("userId").innerText=result.data.response.user_id;
+            document.getElementById("userId").innerText=result.data.response.user_id;
+
         }).catch((err) => {
             console.error(err);
         });
     });
-
-
-    
 }
