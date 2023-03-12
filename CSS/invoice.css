@@ -4,6 +4,7 @@ body {
     background-repeat: no-repeat;
     overflow-x: hidden;
     overflow-y: hidden;
+    margin: 0;
 }
 
 .navBar{
@@ -80,7 +81,7 @@ a:visited {
 }
 
 .registrationForm {
-    margin: 7% 10% 9% auto;
+    margin: 5% 10% 7% auto;
     border-radius: 5%;
     border: 1.5px solid rgba(59, 75, 250, 0.51);
     width: 44%;

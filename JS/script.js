@@ -92,8 +92,8 @@ workshop_pages.load_registration = async () => {
 workshop_pages.load_login = async () => {
 
     document.getElementById("signIn").addEventListener("click", () => {
-        const email= document.getElementById("email").value;
-        const password= document.getElementById("password").value;
+        const email = document.getElementById("email").value;
+        const password = document.getElementById("password").value;
 
         console.log(email, password);
         let data = new FormData();
@@ -109,7 +109,7 @@ workshop_pages.load_login = async () => {
             "data": data
         }).then((result) => {
             console.log(result.data.user_type_id);
-            test= result.data.user_type_id;
+            test = result.data.user_type_id;
         }).catch((err) => {
             console.error(err);
         });
@@ -358,8 +358,8 @@ workshop_pages.load_medication = async () => {
             });
     }
 
-    document.getElementById("choose").addEventListener("click",()=>{
-        
+    document.getElementById("choose").addEventListener("click", () => {
+
         const user_id = document.getElementById("user_id").value;
         const medication_id = document.getElementById("medication_id").value;
         const quantity = document.getElementById("quantity").value;
@@ -392,7 +392,7 @@ workshop_pages.load_service = async () => {
         const description = document.forms["registrationForm"]["description"].value;
         const cost = document.forms["registrationForm"]["cost"].value;
         const department_id = document.forms["registrationForm"]["department_id"].value;
-        
+
         data.append('employee_id', employee_id);
         data.append('patient_id', patient_id);
         data.append('description', description);
@@ -429,7 +429,7 @@ workshop_pages.load_awaitingRequests = async () => {
                         <h2 class="rowData" id="patientIdGet">${request.patient_id}</h2>
                         <h2 class="rowData" id="descriptionGet">${request.description}</h2>
                         <h2 class="rowData" id="costGet">${request.cost}</h2>
-                        <h2 class="rowData" id="departmentGet">${request.department_id }</h2>
+                        <h2 class="rowData" id="departmentGet">${request.department_id}</h2>
                         <h2 class="rowData" id="approvedGet">${request.approved}</h2>
                         </div>
                     </div>
@@ -442,7 +442,7 @@ workshop_pages.load_awaitingRequests = async () => {
             });
     }
 
-    document.getElementById("accept").addEventListener("click",()=>{
+    document.getElementById("accept").addEventListener("click", () => {
         const employee_id = document.getElementById("employee_id").value;
         const patient_id = document.getElementById("patient_id").value;
         const description = document.getElementById("description").value;
@@ -450,7 +450,7 @@ workshop_pages.load_awaitingRequests = async () => {
         const department_id = document.getElementById("department_id").value;
         const approved = document.getElementById("approved").value;
         let data = new FormData();
- 
+
         data.append('employee_id', employee_id);
         data.append('patient_id', patient_id);
         data.append('description', description);
@@ -473,36 +473,46 @@ workshop_pages.load_awaitingRequests = async () => {
     });
 }
 
-workshop_pages.load_getInvoice = async () =>{
+workshop_pages.load_getInvoice = async () => {
 
     let data = new FormData();
 
     document.getElementById("getInvoiceBtn").addEventListener("click", () => {
         const user_id = document.getElementById("user_id").value;
-    
+
         data.append('user_id', user_id);
 
+        const categories = document.getElementById("makepdf")
         const get_users_url = workshop_pages.base_url + "getInvoice.php";
 
-        axios({
-            "method": "post",
-            "url": get_users_url,
-            "data": data
-        }).then((result) => {
-            document.getElementById("userId").innerText=result.data.user_id;
-            document.getElementById("bloodType").innerText=result.data.blood_type;
-            document.getElementById("EHR").innerText=result.data.EHR;
+        axios.post(get_users_url, data)
+            .then((result) => {
+                const services = result.data.services;
+                console.log(services);
 
-            const btn1 = document.getElementById("btn1");
-            const makepdf = document.getElementById("makepdf");
-      
-            btn1.addEventListener("click", function () {
-                html2pdf().from(makepdf).save();
+                services.forEach(service => {
+                    const html = `
+                    <h2 id="userId"></h2> <!--For the user id-->
+                    <ul>
+                        <li>
+                            <h4 id="description">${service.description}</h4>
+                        </li>
+                        <h4 id="cost">${service.cost}</h4>
+                    </ul>
+                    `;
+                    categories.insertAdjacentHTML("beforeend", html);
+                });
+
+
+                const btn1 = document.getElementById("btn1");
+                const makepdf = document.getElementById("makepdf");
+
+                btn1.addEventListener("click", function () {
+                    html2pdf().from(makepdf).save();
+                });
+
+            }).catch((err) => {
+                console.error(err);
             });
-
-            
-        }).catch((err) => {
-            console.error(err);
-        });
     });
 }
