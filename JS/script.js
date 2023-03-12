@@ -220,7 +220,7 @@ workshop_pages.load_patientToHosp = async () => {
         data.append('date_joined', date_joined);
         data.append('date_left', date_left);
 
-        const get_users_url = workshop_pages.base_url + "patientToHosp.php";
+        const get_users_url = workshop_pages.base_url + "employeeToHosp.php";
 
         axios({
             "method": "post",
@@ -235,6 +235,36 @@ workshop_pages.load_patientToHosp = async () => {
 }
 
 workshop_pages.load_employeeToHosp = async () => {
+    window.onload = function () {
+        const categories = document.getElementById("colDisplay")
+        const get_patient_url = workshop_pages.base_url + "employeeToHosp.php";
+
+        axios.get(get_patient_url)
+            .then(function (response) {
+                const links = response.data;
+                links.forEach(link => {
+                    const html = `
+                    <div class="colDisplay">
+                        <div class="rowDisplay" id="usersData">
+                            <h2 class="rowData" id="hospitalIdGet">${link.hospital_id}</h2>
+                            <h2 class="rowData" id="userIdGet">${link.user_id}</h2>
+                            <h2 class="rowData" id="active">${link.is_active}</h2>
+                            <h2 class="rowData" id="dateJoinedGet">${link.date_joined}</h2>
+                            <h2 class="rowData" id="dateLetfGet">${link.date_left}</h2>
+                        </div>
+                    </div>
+                    `;
+                    categories.insertAdjacentHTML("beforeend", html);
+                });
+
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+    }
+}
+
+workshop_pages.load_patientToHospDisplay = async () => {
     window.onload = function () {
         const categories = document.getElementById("colDisplay")
         const get_patient_url = workshop_pages.base_url + "patientToHospDisplay.php";
@@ -262,34 +292,4 @@ workshop_pages.load_employeeToHosp = async () => {
                 console.log(error);
             });
     }
-}
-
-workshop_pages.load_patientToHosp = async () => {
-    let data = new FormData();
-
-    document.getElementById("save").addEventListener("click", () => {
-        const user_id = document.forms["registrationForm"]["user_id"].value;
-        const hospital_id = document.forms["registrationForm"]["hospital_id"].value;
-        const is_active = document.forms["registrationForm"]["is_active"].value;
-        const date_joined = document.forms["registrationForm"]["date_joined"].value;
-        const date_left = document.forms["registrationForm"]["date_left"].value;
-
-        data.append('user_id', user_id);
-        data.append('hospital_id', hospital_id);
-        data.append('is_active', is_active);
-        data.append('date_joined', date_joined);
-        data.append('date_left', date_left);
-
-        const get_users_url = workshop_pages.base_url + "employeeToHosp.php";
-
-        axios({
-            "method": "post",
-            "url": get_users_url,
-            "data": data
-        }).then((result) => {
-            // console.log(result.data);
-        }).catch((err) => {
-            console.error(err);
-        });
-    });
 }
