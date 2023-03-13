@@ -577,3 +577,57 @@ workshop_pages.load_editProfile = async () => {
         }
     }
 }
+
+workshop_pages.load_editProfileEmployee = async () => {
+
+    let data = new FormData();
+
+    document.getElementById("submit").addEventListener("click", () => {
+        const id = document.getElementById("id").value;
+        const name = document.getElementById("name").value;
+        const email = document.getElementById("email").value;
+        const password = document.getElementById("password").value;
+        const confirmPassword = document.getElementById("confirmPassword").value;
+        const dob = document.getElementById("dob").value;
+
+
+        const isValidated = checkEntries(name, email, password, confirmPassword, dob);
+        if (isValidated) {
+            data.append('id', id);
+            data.append('name', name);
+            data.append('email', email);
+            data.append('password', password);
+            data.append('dob', dob);
+
+            const get_users_url = workshop_pages.base_url + "editProfileEmployee.php";
+
+            axios({
+                "method": "post",
+                "url": get_users_url,
+                "data": data
+            }).then((result) => {
+                // console.log(result.data);
+            }).catch((err) => {
+                console.error(err);
+            });
+        }
+    });
+
+    const checkEntries = (name, email, password, confirmPassword, dob) => {
+        if (!(name && email && password && confirmPassword && dob)) {
+            return false;
+        }
+
+        else if (!/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)) {
+            return false;
+        }
+
+        else if (password != confirmPassword) {
+            return false;
+        }
+        else {
+            const decimal = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{8,15}$/;
+            return password.match(decimal) ? true : false;
+        }
+    }
+}
