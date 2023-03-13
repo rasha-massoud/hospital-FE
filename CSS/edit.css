@@ -83,11 +83,11 @@ a:visited {
 
 
 .registrationForm {
-    margin: 8% 10% 7% auto;
+    margin: 3% 10% 4% auto;
     border-radius: 5%;
     border: 1.5px solid rgba(59, 75, 250, 0.51);
     width: 44%;
-    height: 61vh;
+    height: 75vh;
     display: flex;
     flex-direction: column;
 }

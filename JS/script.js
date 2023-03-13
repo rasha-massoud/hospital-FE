@@ -99,26 +99,27 @@ workshop_pages.load_login = async () => {
         data.append('password', password);
 
         const get_users_url = workshop_pages.base_url + "login.php";
-
-        var test;
         axios({
             "method": "post",
             "url": get_users_url,
             "data": data
         }).then((result) => {
-            test = result.data.user_type_id;
+
+            const test = result.data.user_type_id;
+            console.log(result.data)
             if (test == 1) {
                 window.location.href = "/Hospital_FrontEnd/HTML/patientDepartment.html"
             } else if (test == 2) {
                 window.location.href = "Hospital_FrontEnd/HTML/employeePage.html"
             }
-            else {
+            else if (test==3){
                 window.location.href = "/Hospital_FrontEnd/HTML/employee.html"
             }
         }).catch((err) => {
             console.error(err);
         });
     });
+
 }
 
 workshop_pages.load_hospital = async () => {
