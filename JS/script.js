@@ -631,3 +631,33 @@ workshop_pages.load_editProfileEmployee = async () => {
         }
     }
 }
+
+workshop_pages.load_serviceByEmployee = async () => {
+    let data = new FormData();
+
+    document.getElementById("request").addEventListener("click", () => {
+        const employee_id = document.getElementById("employee_id").value;
+        const patient_id = document.getElementById("patient_id").value;
+        const description = document.getElementById("description").value;
+        const cost = document.getElementById("cost").value;
+        const department_id = document.getElementById("department_id").value;
+
+        data.append('employee_id', employee_id);
+        data.append('patient_id', patient_id);
+        data.append('description', description);
+        data.append('cost', cost);
+        data.append('department_id', department_id);
+
+        const get_users_url = workshop_pages.base_url + "serviceByEmployee.php";
+
+        axios({
+            "method": "post",
+            "url": get_users_url,
+            "data": data
+        }).then((result) => {
+            // console.log(result.data);
+        }).catch((err) => {
+            console.error(err);
+        });
+    });
+}
