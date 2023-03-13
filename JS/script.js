@@ -34,12 +34,12 @@ workshop_pages.load_registration = async () => {
     let data = new FormData();
 
     document.getElementById("submit").addEventListener("click", () => {
-        const name = document.forms["registrationForm"]["name"].value;
-        const email = document.forms["registrationForm"]["email"].value;
-        const password = document.forms["registrationForm"]["password"].value;
-        const confirmPassword = document.forms["registrationForm"]["confirmPassword"].value;
-        const dob = document.forms["registrationForm"]["dob"].value;
-        const user_type_id = document.forms["registrationForm"]["user_type_id"].value;
+        const name = document.getElementById("name").value;
+        const email =  document.getElementById("email").value;
+        const password =  document.getElementById("password").value;
+        const confirmPassword =  document.getElementById("confirmPassword").value;
+        const dob =  document.getElementById("dob").value;
+        const user_type_id =  document.getElementById("user_type_id").value;
 
 
         const isValidated = checkEntries(name, email, password, confirmPassword, dob, user_type_id);
