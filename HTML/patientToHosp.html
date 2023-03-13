@@ -24,7 +24,7 @@
             </ul>
         </div>
     </nav>
-    <form name="registrationForm" class="registrationForm">
+    <div name="registrationForm" class="registrationForm">
         <div class="formTitle">
             <h1>Assign a Patient to a Hospital</h1>
         </div>
@@ -36,9 +36,9 @@
             <input type="text" name="hospital_id" class="inputData" id="hospital_id" required="required">
 
             <label for="is_active">Active</label>
-            <select name="is_active" class="inputData" id="user_type_id" required>
-                <option value="active">1</option>
-                <option value="not_ctive">0</option>
+            <select name="is_active" class="inputData" id="is_active" required>
+                <option value="1">1</option>
+                <option value="0">0</option>
             </select>
 
             <label for="date_joined">Date Joined</label>
@@ -51,7 +51,7 @@
             <a href="patientToHospDisplay.html" style="text-align: center;">Show results</a>
         </div>
 
-    </form>
+    </div>
     <script src="/Hospital_FrontEnd/JS/axios.min.js"></script>
     <script src="/Hospital_FrontEnd/JS/script.js" type="text/javascript"></script>
     <script>

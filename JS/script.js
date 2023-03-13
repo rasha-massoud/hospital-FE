@@ -15,11 +15,11 @@ workshop_pages.postAPI = async (api_url, api_data, api_token = null) => {
         return await axios.post(
             api_url,
             api_data,
-            // {
-            //     headers: {
-            //         'Authorization': "token " + api_token
-            //     }
-            // }
+            {
+                headers: {
+                    'Authorization': "token " + api_token
+                }
+            }
         )
     } catch (error) {
         console.log("Error from POST API");
@@ -216,11 +216,11 @@ workshop_pages.load_patientToHosp = async () => {
     let data = new FormData();
 
     document.getElementById("save").addEventListener("click", () => {
-        const user_id = document.forms["registrationForm"]["user_id"].value;
-        const hospital_id = document.forms["registrationForm"]["hospital_id"].value;
-        const is_active = document.forms["registrationForm"]["is_active"].value;
-        const date_joined = document.forms["registrationForm"]["date_joined"].value;
-        const date_left = document.forms["registrationForm"]["date_left"].value;
+        const user_id = document.getElementById("user_id").value;
+        const hospital_id = document.getElementById("hospital_id").value;
+        const is_active = document.getElementById("is_active").value;
+        const date_joined = document.getElementById("date_joined").value;
+        const date_left = document.getElementById("date_left").value;
 
         data.append('user_id', user_id);
         data.append('hospital_id', hospital_id);
