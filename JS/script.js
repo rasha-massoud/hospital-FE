@@ -63,7 +63,6 @@ workshop_pages.load_registration = async () => {
                 "url": get_users_url,
                 "data": data
             }).then((result) => {
-                // console.log(result.data);
             }).catch((err) => {
                 console.error(err);
             });
@@ -95,7 +94,6 @@ workshop_pages.load_login = async () => {
         const email = document.getElementById("email").value;
         const password = document.getElementById("password").value;
 
-        console.log(email, password);
         let data = new FormData();
         data.append('email', email);
         data.append('password', password);
@@ -108,7 +106,6 @@ workshop_pages.load_login = async () => {
             "url": get_users_url,
             "data": data
         }).then((result) => {
-            console.log(result.data.user_type_id);
             test = result.data.user_type_id;
             if (test == 1) {
                 window.location.href = "/Hospital_FrontEnd/HTML/patientDepartment.html"
@@ -238,7 +235,6 @@ workshop_pages.load_patientToHosp = async () => {
             "url": get_users_url,
             "data": data
         }).then((result) => {
-            // console.log(result.data);
         }).catch((err) => {
             console.error(err);
         });
@@ -332,7 +328,6 @@ workshop_pages.load_department = async () => {
             "url": get_users_url,
             "data": data
         }).then((result) => {
-            // console.log(result.data);
         }).catch((err) => {
             console.error(err);
         });
@@ -383,7 +378,6 @@ workshop_pages.load_medication = async () => {
             "url": get_users_url,
             "data": data
         }).then((result) => {
-            // console.log(result.data);
         }).catch((err) => {
             console.error(err);
         });
@@ -414,7 +408,6 @@ workshop_pages.load_service = async () => {
             "url": get_users_url,
             "data": data
         }).then((result) => {
-            // console.log(result.data);
         }).catch((err) => {
             console.error(err);
         });
@@ -465,7 +458,6 @@ workshop_pages.load_awaitingRequests = async () => {
         data.append('cost', cost);
         data.append('department_id', department_id);
         data.append('approved', approved);
-        console.log(employee_id, patient_id, description, cost, department_id, approved);
 
         const get_update_url = workshop_pages.base_url + "acceptingRequests.php";
 
@@ -496,8 +488,6 @@ workshop_pages.load_getInvoice = async () => {
         axios.post(get_users_url, data)
             .then((result) => {
                 const services = result.data.services;
-                console.log(services);
-
                 services.forEach(service => {
                     const html = `
                     <h2 id="userId"></h2> <!--For the user id-->
@@ -552,7 +542,6 @@ workshop_pages.load_editProfile = async () => {
                 "url": get_users_url,
                 "data": data
             }).then((result) => {
-                // console.log(result.data);
             }).catch((err) => {
                 console.error(err);
             });
@@ -606,7 +595,6 @@ workshop_pages.load_editProfileEmployee = async () => {
                 "url": get_users_url,
                 "data": data
             }).then((result) => {
-                // console.log(result.data);
             }).catch((err) => {
                 console.error(err);
             });
@@ -655,7 +643,28 @@ workshop_pages.load_serviceByEmployee = async () => {
             "url": get_users_url,
             "data": data
         }).then((result) => {
-            // console.log(result.data);
+        }).catch((err) => {
+            console.error(err);
+        });
+    });
+}
+
+workshop_pages.load_statistics = async () => {
+    let data = new FormData();
+
+    document.getElementById("submit").addEventListener("click", () => {
+        const user_type_id = document.getElementById("user_type_id").value;
+
+        data.append('user_type_id', user_type_id);
+
+        const get_users_url = workshop_pages.base_url + "statistics.php";
+
+        axios({
+            "method": "post",
+            "url": get_users_url,
+            "data": data
+        }).then((result) => {
+            document.getElementById("resultData").innerText=result.data.status;
         }).catch((err) => {
             console.error(err);
         });
