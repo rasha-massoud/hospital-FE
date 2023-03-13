@@ -545,6 +545,10 @@ workshop_pages.load_getInvoice = async () => {
                 console.error(err);
             });
     });
+    document.getElementById("logout").addEventListener("click", () => {
+        const get_users_url = workshop_pages.base_url + "logout.php";
+        window.location.href="/Hospital_FrontEnd/HTML/login.html";
+    });
 }
 
 workshop_pages.load_editProfile = async () => {
