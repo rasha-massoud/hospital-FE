@@ -35,11 +35,11 @@ workshop_pages.load_registration = async () => {
 
     document.getElementById("submit").addEventListener("click", () => {
         const name = document.getElementById("name").value;
-        const email =  document.getElementById("email").value;
-        const password =  document.getElementById("password").value;
-        const confirmPassword =  document.getElementById("confirmPassword").value;
-        const dob =  document.getElementById("dob").value;
-        const user_type_id =  document.getElementById("user_type_id").value;
+        const email = document.getElementById("email").value;
+        const password = document.getElementById("password").value;
+        const confirmPassword = document.getElementById("confirmPassword").value;
+        const dob = document.getElementById("dob").value;
+        const user_type_id = document.getElementById("user_type_id").value;
 
 
         const isValidated = checkEntries(name, email, password, confirmPassword, dob, user_type_id);
@@ -150,6 +150,10 @@ workshop_pages.load_hospital = async () => {
                 console.log(error);
             });
     }
+    document.getElementById("logout").addEventListener("click", () => {
+        const get_users_url = workshop_pages.base_url + "logout.php";
+        window.location.href="/Hospital_FrontEnd/HTML/login.html";
+    });
 }
 
 workshop_pages.load_employee = async () => {
@@ -181,6 +185,10 @@ workshop_pages.load_employee = async () => {
                 console.log(error);
             });
     }
+    document.getElementById("logout").addEventListener("click", () => {
+        const get_users_url = workshop_pages.base_url + "logout.php";
+        window.location.href="/Hospital_FrontEnd/HTML/login.html";
+    });
 }
 
 workshop_pages.load_patient = async () => {
@@ -210,6 +218,10 @@ workshop_pages.load_patient = async () => {
                 console.log(error);
             });
     }
+    document.getElementById("logout").addEventListener("click", () => {
+        const get_users_url = workshop_pages.base_url + "logout.php";
+        window.location.href="/Hospital_FrontEnd/HTML/login.html";
+    });
 }
 
 workshop_pages.load_patientToHosp = async () => {
@@ -238,6 +250,10 @@ workshop_pages.load_patientToHosp = async () => {
         }).catch((err) => {
             console.error(err);
         });
+    });
+    document.getElementById("logout").addEventListener("click", () => {
+        const get_users_url = workshop_pages.base_url + "logout.php";
+        window.location.href="/Hospital_FrontEnd/HTML/login.html";
     });
 }
 
@@ -269,6 +285,10 @@ workshop_pages.load_employeeToHosp = async () => {
                 console.log(error);
             });
     }
+    document.getElementById("logout").addEventListener("click", () => {
+        const get_users_url = workshop_pages.base_url + "logout.php";
+        window.location.href="/Hospital_FrontEnd/HTML/login.html";
+    });
 }
 
 workshop_pages.load_patientToHospDisplay = async () => {
@@ -320,7 +340,7 @@ workshop_pages.load_department = async () => {
         data.append('datetime_entered', datetime_entered);
         data.append('datetime_left', datetime_left);
         data.append('bed_number', bed_number);
-        console.log(user_id, department_id,hospital_id , room_id, datetime_entered, datetime_left, bed_number  );
+        console.log(user_id, department_id, hospital_id, room_id, datetime_entered, datetime_left, bed_number);
         const get_users_url = workshop_pages.base_url + "department.php";
 
         axios({
@@ -331,6 +351,10 @@ workshop_pages.load_department = async () => {
         }).catch((err) => {
             console.error(err);
         });
+    });
+    document.getElementById("logout").addEventListener("click", () => {
+        const get_users_url = workshop_pages.base_url + "logout.php";
+        window.location.href="/Hospital_FrontEnd/HTML/login.html";
     });
 }
 
@@ -412,6 +436,10 @@ workshop_pages.load_service = async () => {
             console.error(err);
         });
     });
+    document.getElementById("logout").addEventListener("click", () => {
+        const get_users_url = workshop_pages.base_url + "logout.php";
+        window.location.href="/Hospital_FrontEnd/HTML/login.html";
+    });
 }
 
 workshop_pages.load_awaitingRequests = async () => {
@@ -470,6 +498,10 @@ workshop_pages.load_awaitingRequests = async () => {
             console.error(err);
         });
 
+    });
+    document.getElementById("logout").addEventListener("click", () => {
+        const get_users_url = workshop_pages.base_url + "logout.php";
+        window.location.href="/Hospital_FrontEnd/HTML/login.html";
     });
 }
 
@@ -565,6 +597,10 @@ workshop_pages.load_editProfile = async () => {
             return password.match(decimal) ? true : false;
         }
     }
+    document.getElementById("logout").addEventListener("click", () => {
+        const get_users_url = workshop_pages.base_url + "logout.php";
+        window.location.href="/Hospital_FrontEnd/HTML/login.html";
+    });
 }
 
 workshop_pages.load_editProfileEmployee = async () => {
@@ -618,6 +654,10 @@ workshop_pages.load_editProfileEmployee = async () => {
             return password.match(decimal) ? true : false;
         }
     }
+    document.getElementById("logout").addEventListener("click", () => {
+        const get_users_url = workshop_pages.base_url + "logout.php";
+        window.location.href="/Hospital_FrontEnd/HTML/login.html";
+    });
 }
 
 workshop_pages.load_serviceByEmployee = async () => {
@@ -647,6 +687,10 @@ workshop_pages.load_serviceByEmployee = async () => {
             console.error(err);
         });
     });
+    document.getElementById("logout").addEventListener("click", () => {
+        const get_users_url = workshop_pages.base_url + "logout.php";
+        window.location.href="/Hospital_FrontEnd/HTML/login.html";
+    });
 }
 
 workshop_pages.load_statistics = async () => {
@@ -664,9 +708,14 @@ workshop_pages.load_statistics = async () => {
             "url": get_users_url,
             "data": data
         }).then((result) => {
-            document.getElementById("resultData").innerText=result.data.status;
+            document.getElementById("resultData").innerText = result.data.status;
         }).catch((err) => {
             console.error(err);
         });
+    });
+
+    document.getElementById("logout").addEventListener("click", () => {
+        const get_users_url = workshop_pages.base_url + "logout.php";
+        window.location.href="/Hospital_FrontEnd/HTML/login.html";
     });
 }
