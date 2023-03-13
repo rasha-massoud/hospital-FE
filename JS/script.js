@@ -320,7 +320,7 @@ workshop_pages.load_department = async () => {
         data.append('datetime_entered', datetime_entered);
         data.append('datetime_left', datetime_left);
         data.append('bed_number', bed_number);
-
+        console.log(user_id, department_id,hospital_id , room_id, datetime_entered, datetime_left, bed_number  );
         const get_users_url = workshop_pages.base_url + "department.php";
 
         axios({
