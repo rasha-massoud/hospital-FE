@@ -22,7 +22,7 @@
             </ul>
         </div>
     </nav>
-    <form name="registrationForm" class="registrationForm">
+    <div name="registrationForm" class="registrationForm">
         <div class="formTitle">
             <h1>Choose the Department and room</h1>
         </div>
@@ -40,10 +40,10 @@
             <input type="text" name="room_id" class="inputData" id="room_id" required="required">
 
             <label for="datetime_entered">Date Joined</label>
-            <input type="date" name="datetime_entered" class="inputData" id="datetime_entered" required="required">
+            <input type="text" name="datetime_entered" class="inputData" id="datetime_entered" required="required">
 
             <label for="datetime_left">Date Left</label>
-            <input type="date" name="datetime_left" class="inputData" id="datetime_left" required="required">
+            <input type="text" name="datetime_left" class="inputData" id="datetime_left" required="required">
             
             <label for="bed_number">Bed Number</label>
             <select name="bed_number" class="inputData" id="bed_number" required>
@@ -53,8 +53,7 @@
 
             <button class="btn" id="save">Save</button>
         </div>
-
-    </form>
+    </div>
 
     <script src="/Hospital_FrontEnd/JS/axios.min.js"></script>
     <script src="/Hospital_FrontEnd/JS/script.js" type="text/javascript"></script>

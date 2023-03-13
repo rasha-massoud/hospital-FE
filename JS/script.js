@@ -305,13 +305,13 @@ workshop_pages.load_department = async () => {
     let data = new FormData();
 
     document.getElementById("save").addEventListener("click", () => {
-        const user_id = document.forms["registrationForm"]["user_id"].value;
-        const department_id = document.forms["registrationForm"]["department_id"].value;
-        const hospital_id = document.forms["registrationForm"]["hospital_id"].value;
-        const room_id = document.forms["registrationForm"]["room_id"].value;
-        const datetime_entered = document.forms["registrationForm"]["datetime_entered"].value;
-        const datetime_left = document.forms["registrationForm"]["datetime_left"].value;
-        const bed_number = document.forms["registrationForm"]["bed_number"].value;
+        const user_id = document.getElementById("user_id").value;
+        const department_id = document.getElementById("department_id").value;
+        const hospital_id = document.getElementById("hospital_id").value;
+        const room_id = document.getElementById("room_id").value;
+        const datetime_entered = document.getElementById("datetime_entered").value;
+        const datetime_left = document.getElementById("datetime_left").value;
+        const bed_number = document.getElementById("bed_number").value;
 
         data.append('user_id', user_id);
         data.append('department_id', department_id);
